@@ -1,5 +1,7 @@
 package com.ideassion.POM;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -273,6 +275,18 @@ public class VarProcess extends BaseClass {
 	@FindBy(xpath = "(//input[@type='text'])[4]")
 	private WebElement VS3_clinic_name;
 
+	@FindBy(id = "tab4")
+	private WebElement VAR1_VS4_Equipment_Transfer;
+
+	@FindBy(id = "myfile")
+	private WebElement VAR1_VS4_supporting_Document;
+	
+	
+	
+	
+	
+	
+	
 	public void click_on_varprocess_tab() {
 		scrollIntoView(VarProcess_tab);
 		highLightElement(VarProcess_tab);
@@ -296,12 +310,14 @@ public class VarProcess extends BaseClass {
 			var1_clinic_district.sendKeys(Keys.ENTER);
 			sendkeysText(var1_clinic_Clinic, Clinic());
 			var1_clinic_Clinic.sendKeys(Keys.ENTER);
-			scrollBy200();
-			sendkeysText(var1_clinic_BEcategory, BECategory());
-			var1_clinic_BEcategory.sendKeys(Keys.ENTER);
-			var1_clinic_Purchase_date.sendKeys("12/10/2022");
-			JavascriptExecutor js = ((JavascriptExecutor) (driver));
-			js.executeScript("arguments[0].setAttribute('ng-reflect-model','2022-10-19');", var1_clinic_Purchase_date);
+			sendkeysText(var1_clinic_BEcategory,BECategory());
+//			var1_clinic_BEcategory.sendKeys(Keys.ENTER);
+//			var1_clinic_Purchase_date.sendKeys("12/10/2022");
+//			JavascriptExecutor js = ((JavascriptExecutor) (driver));
+//			Date d = new Date();
+//			SimpleDateFormat sm = new SimpleDateFormat("yyyy-MM-dd");
+//			String ab = sm.format(d);
+//			js.executeScript("arguments[0].setAttribute('ng-reflect-model','2022-10-27');", var1_clinic_Purchase_date);
 			scrollIntoView(var1_clinic_Model);
 			sendkeysText(var1_clinic_KewPaNo, "123");
 			sendkeysText(var1_clinic_Manufacturer, Manufacturer());
@@ -570,9 +586,7 @@ public class VarProcess extends BaseClass {
 		clickonJavascript(Edit_BE_Yes_Tab);
 		Thread.sleep(1000);
 		clickonJavascript(create_successfully_after_ok);
-
 	}
-
 	public void click_on_var1_vs2_omission() {
 		clickOnElement(VarProcess_tab);
 		clickOnElement(var1_clinic);
@@ -584,10 +598,9 @@ public class VarProcess extends BaseClass {
 		sendkeysText(VAR1_VS2_omission_BE_number_inputbox, BE_Number1);
 		clickOnElement(var1_vs2_omission_search_button);
 	}
-
 	public void enter_BEnumber_DER_omissionpage() {
 		clickonJavascript(var1_clinic_new_Button);
-		sendkeysText(VAR1_VS2_omission_BE_number_inputbox, BE_Number2);
+		sendkeysText(VAR1_VS2_omission_BE_number_inputbox, BE_Number1_1);
 		clickOnElement(var1_vs2_omission_search_button);
 		clickOnElement(BER_tab_var1_vs2);
 
@@ -609,14 +622,33 @@ public class VarProcess extends BaseClass {
 	}
 
 	public void click_var1_vs2_omissoin_edit() throws InterruptedException {
-
+		clickonJavascript(VarProcess_tab);
 		clickonJavascript(varProcess_Var1);
 		clickOnElement(VAR1_VS2_Additional_Equipment);
 		sendkeysText(search_tab_var1_vs1, BE_Number1_1);
+		Thread.sleep(1500);
+		search_tab_var1_vs1.sendKeys(Keys.ENTER);
 		clickOnElement(VAR1_VS1_Additional_Equipment_hyperlink);
 		clickonJavascript(VAR1_VS1_Additional_Equipment_save_forward);
 		clickonJavascript(create_successfully_after_ok);
-		sendkeysText(search_tab_var1_vs1,BE_Number1_1 );
+		sendkeysText(search_tab_var1_vs1, BE_Number1_1);
+		clickOnElement(VAR1_VS1_Additional_Equipment_hyperlink);
+		Thread.sleep(8000);
+		sendkeysText(SNF_from, "C:\\Users\\LTP-7\\OneDrive\\Desktop\\DataSheet\\BE-Number.pdf");
+		clickonJavascript(Verified_button_var1_vs2);
+		clickonJavascript(create_successfully_after_ok);
+	}
+	public void click_var1_vs2_data_omissoin_edit() throws InterruptedException {
+		clickonJavascript(VarProcess_tab);
+		clickonJavascript(varProcess_Var1);
+		clickOnElement(VAR1_VS2_Additional_Equipment);
+		sendkeysText(search_tab_var1_vs1, BE_Number1);
+		Thread.sleep(1500);
+		search_tab_var1_vs1.sendKeys(Keys.ENTER);
+		clickOnElement(VAR1_VS1_Additional_Equipment_hyperlink);
+		clickonJavascript(VAR1_VS1_Additional_Equipment_save_forward);
+		clickonJavascript(create_successfully_after_ok);
+		sendkeysText(search_tab_var1_vs1, BE_Number1);
 		clickonJavascript(VAR1_VS1_Additional_Equipment_hyperlink);
 		Thread.sleep(8000);
 		sendkeysText(SNF_from, "C:\\Users\\LTP-7\\OneDrive\\Desktop\\DataSheet\\BE-Number.pdf");
@@ -630,21 +662,44 @@ public class VarProcess extends BaseClass {
 		clickOnElement(var1_clinic_new_Button);
 		sendkeysText(VAR1_VS2_omission_BE_number_inputbox, BE_Number1_2);
 		clickOnElement(var1_vs2_omission_search_button);
-		String clinic= VS3_clinic_name.getText();
-		WebElement present_clinic=	driver.findElement(By.xpath("(//input[@type='text'])[12]"));
+		String clinic = VS3_clinic_name.getText();
+		WebElement present_clinic = driver.findElement(By.xpath("(//input[@type='text'])[12]"));
 		present_clinic.click();
-		List<WebElement> AllClinic=driver.findElements(By.xpath("//div[contains(@class,'ng-dropdown-panel-items scroll-host')]//child::div[contains(@class,'ng-option')]"));
-		for(int i=0;i<AllClinic.size();i++) {
-			String data=AllClinic.get(i).getText();
-			if(!data.equals(clinic)) {
-				logger.info(clinic+": Present Clinic name VS3 and "+"Print the Clinic name: "+data);
+		List<WebElement> AllClinic = driver.findElements(By.xpath(
+				"//div[contains(@class,'ng-dropdown-panel-items scroll-host')]//child::div[contains(@class,'ng-option')]"));
+		for (int i = 0; i < AllClinic.size(); i++) {
+			String data = AllClinic.get(i).getText();
+			if (!data.equals(clinic)) {
+				logger.info(clinic + ": Present Clinic name VS3 and " + "Print the Clinic name: " + data);
 				present_clinic.sendKeys(Keys.ARROW_DOWN);
 				present_clinic.sendKeys(Keys.ARROW_DOWN);
 				present_clinic.sendKeys(Keys.ENTER);
-				sendkeysText(var1_clinic_SupportingDocument,"‪C:\\Users\\LTP-7\\OneDrive\\Desktop\\DataSheet\\BE-Number.pdf");
+				sendkeysText(var1_clinic_SupportingDocument,
+						"‪C:\\Users\\LTP-7\\OneDrive\\Desktop\\DataSheet\\BE-Number.pdf");
 				clickonJavascript(va1_clinic_save_submit);
 				clickonJavascript(create_successfully_after_ok);
 
+			WebElement eye_button=	driver.findElement(By.xpath("//td[text()='"+BE_Number1_2+"']//preceding-sibling::td//child::button"));
+				
+				sendkeysText(BE_registration_search_inputbox, BE_Number1_2);
+				BE_registration_search_inputbox.sendKeys(Keys.ENTER);
+				clickonJavascript(eye_button);
+				clickonJavascript(va1_clinic_save_submit);
+				clickonJavascript(create_successfully_after_ok);
+				clickonJavascript(eye_button);
+				clickonJavascript(Verified_button_var1_vs2);
+				clickonJavascript(create_successfully_after_ok);
+				
+				clickonJavascript(VAR1_VS4_Equipment_Transfer);
+				sendkeysText(BE_registration_search_inputbox, BE_Number1_2);
+				BE_registration_search_inputbox.sendKeys(Keys.ENTER);
+				clickonJavascript(eye_button);
+				VAR1_VS4_supporting_Document.sendKeys("C:\\Users\\LTP-7\\OneDrive\\Desktop\\DataSheet\\BE-Number.pdf");
+				clickonJavascript(va1_clinic_save_submit);
+				clickonJavascript(create_successfully_after_ok);
+				clickonJavascript(eye_button);
+				clickonJavascript(Verified_button_var1_vs2);
+				clickonJavascript(create_successfully_after_ok);
 			}
 		}
 	}

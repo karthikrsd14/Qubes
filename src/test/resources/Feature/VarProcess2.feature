@@ -27,15 +27,11 @@ Scenario: All mandatroy details give that varprocess
   And Click next button form finacial tab
   Then Enter the all other information details
   Then Add the supporting documents and save and submit
-  
-  Scenario: performed on VAR1-VS2 Clinic DER Omission process
-  Then Check the validations VAR1_VS2
-  Then Click on VAR1_VS2_Omission Of Equipment tab
  
   
   Scenario: Performed in vs3 tab
   Given Click on VAR1_VS3 tab
-  When Enter the data in BE number search box
-  Then Verified the data for var1_vs2 tab
+  #When Enter the data in BE number search box
+  #Then Verified the data for var1_vs2 tab
    
    

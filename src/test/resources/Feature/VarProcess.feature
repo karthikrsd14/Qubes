@@ -35,6 +35,7 @@ Feature: VarProcess Details check
     Then Enter the BE number from Omission page tab
     Then Choose in the Supporting Document KEWPA15
     And Click on Save and submit button Omission page tab
+    Then Valid data is checking in omission
 
   Scenario: Verified all view datas repeated
     Given Click on VAR Process tab
@@ -59,8 +60,7 @@ Feature: VarProcess Details check
     And Click next button form finacial tab
     Then Enter the all other information details
     Then Add the supporting documents and save and submit
-    #Given Click on VAR1-VS2 Omission process tab
-    #When Clinic on New tab under Omission page
-    #Then Enter the BE number from Omission page tab
-    #Then Choose in the Supporting Document KEWPA15
-    #And Click on Save and submit button Omission page tab
+    
+     Scenario: performed on VAR1-VS2 Clinic DER Omission process
+  Then Check the validations VAR1_VS2
+  Then Click on VAR1_VS2_Omission Of Equipment tab

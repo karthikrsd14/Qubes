@@ -59,8 +59,4 @@ Feature: VarProcess Details check
     And Click next button form finacial tab
     Then Enter the all other information details
     Then Add the supporting documents and save and submit
-    #Given Click on VAR1-VS2 Omission process tab
-    #When Clinic on New tab under Omission page
-    #Then Enter the BE number from Omission page tab
-    #Then Choose in the Supporting Document KEWPA15
-    #And Click on Save and submit button Omission page tab
+   

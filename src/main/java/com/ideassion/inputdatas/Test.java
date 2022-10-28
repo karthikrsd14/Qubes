@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Properties;
 
@@ -22,7 +24,12 @@ public class Test {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 		
-		check();
+		Date d= new Date();
+		SimpleDateFormat sm= new SimpleDateFormat("yyyy-MM-dd");
+	String ab=	sm.format(d);
+	System.out.println(ab);
+		
+//		check();
 //		
 //		WebDriverManager.chromedriver().setup();
 //		WebDriver driver = new ChromeDriver();
@@ -64,6 +71,7 @@ public class Test {
 			
 
 			int cell1=sheet.getRow(1).getLastCellNum();
+			sheet.getRow(1).getLastCellNum();
 			for(int i=0;i<cell1;i++) {
 			sheet.getRow(0).getCell(j).setCellType(CellType.STRING);
 			sheet.getRow(1).getCell(i).setCellType(CellType.STRING);
@@ -74,7 +82,7 @@ public class Test {
 			}
 		}
 	
-		System.out.println(fileread.get("Address").toString());
+		
 	}
 			
 	}

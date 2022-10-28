@@ -191,6 +191,10 @@ public class StepDefinationVarprocess extends BaseClass{
 	    
 	  
 	}
+	@Then("Valid data is checking in omission")
+	public void valid() throws InterruptedException {
+		varprocess.click_var1_vs2_data_omissoin_edit();
+	}
 
 	@Then("Choose in the Supporting Document KEWPA15")
 	public void choose_in_the_supporting_document_kewpa15() {
@@ -232,7 +236,7 @@ public class StepDefinationVarprocess extends BaseClass{
 	 }
 	 @Given("Click on VAR1_VS3 tab")
 	 public void check_VAR1_VS3() throws InterruptedException {
-		 varprocess.click_var1_vs2_omissoin_edit();
+	
 		 varprocess.enter_var1_vs3_tab() ;
 	 }
 	
