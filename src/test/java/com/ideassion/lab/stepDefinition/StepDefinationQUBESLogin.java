@@ -23,18 +23,25 @@ public class StepDefinationQUBESLogin extends BaseClass {
 	@When("Enter the valid Username give the input box as {string}")
 	public void enter_the_valid_username_give_the_input_box(String username) {
 		loginpage.enter_username(username);
-		
-		if(username.equals("rkarthik@ideassion.com")) {
+//		
+//		if(username.equals("rkarthik@ideassion.com")) {
 			logger.info(" valid username :"+username);
-		}
-		else {
-			logger.info("Invaild username :"+username);
-		
-		Assert.assertEquals(username,"rkarthik@ideassion.com");
-		
+//		}
+//		else {
+//			logger.info("Invaild username :"+username);
+//		
+//		Assert.assertEquals(username,"rkarthik@ideassion.com");
+//		
+//	}
 	}
+	@Then("Perform varprocess all details")
+	public void login() {
+		usermanagement.New_tab_open();
+		usermanagement.login_gmail_get_otp();
 	}
-
+	
+	
+	
 	@Then("Click the Get OTP button")
 	public void click_the_get_otp_button() {
 	   loginpage.click_OTP_button();

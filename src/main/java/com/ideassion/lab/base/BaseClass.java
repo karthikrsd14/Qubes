@@ -24,6 +24,7 @@ import com.ideassion.POM.OutLookOpen;
 import com.ideassion.POM.QubesMasterNewSuppiler;
 import com.ideassion.POM.VarProcess;
 import com.ideassion.inputdatas.Inputdata;
+import com.ideassion.var1.pom.Var1UserManagement;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -45,7 +46,9 @@ public class BaseClass extends Inputdata {
 	public static ClinicDetails clinicdetails;
 	public static ManufacturerModel manufacturermodels;
 	public static VarProcess varprocess;
-
+	public static Var1UserManagement usermanagement;
+	
+	
 	public void openBrowser(String browser) {
 		ChromeOptions options = new ChromeOptions();
 		options.setExperimentalOption("useAutomationExtension", false);
@@ -77,6 +80,7 @@ public class BaseClass extends Inputdata {
 		clinicdetails = new ClinicDetails(getDriver.get(Thread.currentThread().getId()));
 		manufacturermodels = new ManufacturerModel(getDriver.get(Thread.currentThread().getId()));
 		varprocess = new VarProcess(getDriver.get(Thread.currentThread().getId()));
+		usermanagement = new Var1UserManagement(getDriver.get(Thread.currentThread().getId()));
 	}
 
 	public boolean waitForElement(WebElement element) {
