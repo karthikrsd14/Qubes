@@ -18,7 +18,7 @@ import com.ideassion.lab.base.BaseClass;
  */
 public class ManufacturerModel extends BaseClass {
 	WebDriver driver;
-
+	public static String Newdata;
 	public ManufacturerModel(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -103,9 +103,17 @@ public class ManufacturerModel extends BaseClass {
 
 	public void add_all_BE_details() {
 		try {
+			String ip="NewData ";
+			String data=SupplierName();
+			String[] op=data.split(" ");
+			int a=Integer.parseInt(op[1]);
+			a--;
+			a--;
+			String change=String.valueOf(a);
+			Newdata=ip+change;
 			sendkeysText(BE_category_inputbox, "Handpieces, Dental");
 			BE_category_inputbox.sendKeys(Keys.ENTER);
-			sendkeysText(BE_manufacturer_inputbox, SupplierName());
+			sendkeysText(BE_manufacturer_inputbox,Newdata);
 			BE_manufacturer_inputbox.sendKeys(Keys.ENTER);
 			sendkeysText(BE_modelnumber_inputbox,"manufacturer data");
 
@@ -128,11 +136,11 @@ public class ManufacturerModel extends BaseClass {
 	public void search_inputbox_validate() {
 		try {
 			Thread.sleep(2000);
-			sendkeysText(manufacturer_modeltab_search_box, SupplierName());
+			sendkeysText(manufacturer_modeltab_search_box,Newdata);
 			Thread.sleep(500);
 			clickOnElement(model_count_button);
 			WebElement action = driver
-					.findElement(By.xpath("(//a[text()='" + SupplierName() + "']//following::td)[3]//child::i"));
+					.findElement(By.xpath("(//a[text()='manufacturer data']//following::td)[3]//child::i"));
 			action.click();
 			clickOnElement(edit_save_button);
 			clickOnElement(Update_yes_button);
@@ -145,8 +153,8 @@ public class ManufacturerModel extends BaseClass {
 		try {
 			Thread.sleep(2000);
 			manufacturer_modeltab_search_box.clear();
-			sendkeysText(manufacturer_modeltab_search_box, SupplierName());
-			Thread.sleep(1500);
+			sendkeysText(manufacturer_modeltab_search_box,Newdata);
+			Thread.sleep(2000);
 			manufacturer_modeltab_search_box.sendKeys(Keys.ENTER);
 			
 		}
@@ -157,12 +165,12 @@ public class ManufacturerModel extends BaseClass {
 	public void verified() {
 		try {
 			clickOnElement(model_count_button);
-			WebElement hyperlink = driver.findElement(By.xpath("//a[contains(text(),'" + SupplierName() + "')]"));
+//			WebElement hyperlink = driver.findElement(By.xpath("//a[contains(text(),'manufacturer data')]"));
 			Thread.sleep(500);
-			scrollIntoView(hyperlink);
+//			scrollIntoView(hyperlink);
 //		int a= Hyperlinks_all_datas.size();
 //		int b=a-1;
-	WebElement link=	driver.findElement(By.linkText(SupplierName()));
+	WebElement link=	driver.findElement(By.linkText("manufacturer data"));
 	link.click();
 		scrollIntoView(verfied_tab);
 		if(verfied_tab.isEnabled()) {

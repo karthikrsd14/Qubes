@@ -24,7 +24,7 @@ public class QubesMasterNewSuppiler extends BaseClass {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//a[contains(@class,'nav-link ng-tns-c113-1')]")
+	@FindBy(xpath = "(//a[contains(@class,'nav-link ng')])[2]")
 	private WebElement master_tab;
 
 	@FindBy(xpath = "(//li[contains(@class,'ng-star-inserted')])[12]")
@@ -276,7 +276,7 @@ public class QubesMasterNewSuppiler extends BaseClass {
 	}
 
 	public void final_save() {
-		before_verified_save_button.click();
+		clickonJavascript(before_verified_save_button);
 		clickOnElement(before_verified_ok_button);
 			 clickOnElement(after_verified_ok_button);
 		

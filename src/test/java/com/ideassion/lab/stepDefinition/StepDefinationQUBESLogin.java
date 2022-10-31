@@ -40,20 +40,20 @@ public class StepDefinationQUBESLogin extends BaseClass {
 	   loginpage.click_OTP_button();
 	}
 
-//	@Then("Verfied the OTP in Outlook")
-//	public void verfied_the_otp_in_mail() {
-//		outlookopen.open_newtab();
-//		outlookopen.enter_outlookurl();
-//		outlookopen.login();
-//		outlookopen.get_OTP();
-//		 logger.info("get OTP "+outlookopen.get_OTP());
-//	}
-//	
-//	@Then("Enter the Valid OTP give the input box")
-//	public void enter_the_valid_otp_give_the_input_box() {
-//	   outlookopen.enter_OTP();
-//		
-//	}
+	@Then("Verfied the OTP in Outlook")
+	public void verfied_the_otp_in_mail() {
+		outlookopen.open_newtab();
+		outlookopen.enter_outlookurl();
+		outlookopen.login();
+		outlookopen.get_OTP();
+		 logger.info("get OTP "+outlookopen.get_OTP());
+	}
+	
+	@Then("Enter the Valid OTP give the input box")
+	public void enter_the_valid_otp_give_the_input_box() {
+	   outlookopen.enter_OTP();
+		
+	}
 
 	@Then("Click on the Test Environment")
 	public void click_on_testEnvironment() {

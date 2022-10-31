@@ -311,7 +311,7 @@ public class VarProcess extends BaseClass {
 			sendkeysText(var1_clinic_Clinic, Clinic());
 			var1_clinic_Clinic.sendKeys(Keys.ENTER);
 			sendkeysText(var1_clinic_BEcategory,BECategory());
-//			var1_clinic_BEcategory.sendKeys(Keys.ENTER);
+			var1_clinic_BEcategory.sendKeys(Keys.ENTER);
 //			var1_clinic_Purchase_date.sendKeys("12/10/2022");
 //			JavascriptExecutor js = ((JavascriptExecutor) (driver));
 //			Date d = new Date();
@@ -657,10 +657,11 @@ public class VarProcess extends BaseClass {
 	}
 
 	public void enter_var1_vs3_tab() {
+		
 		clickonJavascript(varProcess_Var1);
 		clickonJavascript(VAR1_VS3_Equipment_Transfer);
 		clickOnElement(var1_clinic_new_Button);
-		sendkeysText(VAR1_VS2_omission_BE_number_inputbox, BE_Number1_2);
+		sendkeysText(VAR1_VS2_omission_BE_number_inputbox,"JHR008405");
 		clickOnElement(var1_vs2_omission_search_button);
 		String clinic = VS3_clinic_name.getText();
 		WebElement present_clinic = driver.findElement(By.xpath("(//input[@type='text'])[12]"));
@@ -679,9 +680,9 @@ public class VarProcess extends BaseClass {
 				clickonJavascript(va1_clinic_save_submit);
 				clickonJavascript(create_successfully_after_ok);
 
-			WebElement eye_button=	driver.findElement(By.xpath("//td[text()='"+BE_Number1_2+"']//preceding-sibling::td//child::button"));
+			WebElement eye_button=	driver.findElement(By.xpath("//td[text()='"+"JHR008405"+"']//preceding-sibling::td//child::button"));
 				
-				sendkeysText(BE_registration_search_inputbox, BE_Number1_2);
+				sendkeysText(BE_registration_search_inputbox, "JHR008405");
 				BE_registration_search_inputbox.sendKeys(Keys.ENTER);
 				clickonJavascript(eye_button);
 				clickonJavascript(va1_clinic_save_submit);
@@ -691,7 +692,7 @@ public class VarProcess extends BaseClass {
 				clickonJavascript(create_successfully_after_ok);
 				
 				clickonJavascript(VAR1_VS4_Equipment_Transfer);
-				sendkeysText(BE_registration_search_inputbox, BE_Number1_2);
+				sendkeysText(BE_registration_search_inputbox, "JHR008405");
 				BE_registration_search_inputbox.sendKeys(Keys.ENTER);
 				clickonJavascript(eye_button);
 				VAR1_VS4_supporting_Document.sendKeys("C:\\Users\\LTP-7\\OneDrive\\Desktop\\DataSheet\\BE-Number.pdf");
