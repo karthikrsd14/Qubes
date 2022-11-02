@@ -10,6 +10,7 @@ Feature: Pass the Valid Positive Test
     Then Verfied the OTP in Outlook
     Then Enter the Valid OTP give the input box
     And Click on the Test Environment
+
   @Masterdetail_Equipments_supplier_check
   Scenario: check the all master details QUBES in New manufacturer suppiler details Customer
     Given Click on master tab
@@ -22,14 +23,16 @@ Feature: Pass the Valid Positive Test
     Then Click on save and submit button
     Then Click on Ok button in conformation
     And Click on the create successfully Ok button
-@supplier_verified
+
+  @supplier_verified
   Scenario: verified the new acitve yes customer details
     Given Click on action button
     When Click on save submit button
     Then Click on suppilercode hyperlink and verfied
     And Download on Excel and Pdf
     Then Verfied the download file
-@active_to_inactive_Equipment_supplier
+
+  @active_to_inactive_Equipment_supplier
   Scenario: Update data give active no vaildation
     Then Click on new button
     Then Enter the Equipment supplier name text box in new data
