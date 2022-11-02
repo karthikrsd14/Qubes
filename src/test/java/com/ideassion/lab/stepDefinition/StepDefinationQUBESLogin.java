@@ -1,6 +1,7 @@
 package com.ideassion.lab.stepDefinition;
-import com.ideassion.lab.base.BaseClass; 
+import com.ideassion.lab.base.BaseClass;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -23,24 +24,30 @@ public class StepDefinationQUBESLogin extends BaseClass {
 	@When("Enter the valid Username give the input box as {string}")
 	public void enter_the_valid_username_give_the_input_box(String username) {
 		loginpage.enter_username(username);	
-		if(username.equals("rkarthik@ideassion.com")) {
-			logger.info(" valid username :"+username);
-		}
-		else {
-			logger.info("Invaild username :"+username);
-		
-		Assert.assertEquals(username,"rkarthik@ideassion.com");
-		
+//		if(username.equals("rkarthik@ideassion.com")) {
+//			logger.info(" valid username :"+username);
+//		}
+//		else {
+//			logger.info("Invaild username :"+username);
+//		
+//		Assert.assertEquals(username,"rkarthik@ideassion");
+//		
+//	}
 	}
-	}
-	@Then("Perform varprocess all details")
+	@And("Click on the Signin button")
 	public void login() {
-		usermanagement.New_tab_open();
-		usermanagement.login_gmail_get_otp();
+		loginpage.clickon_signin();
 	}
 	
-	
-	
+	//Log in Gmail process
+//	@Then("Perform varprocess all details")
+//	public void login() {
+//		usermanagement.New_tab_open();
+//		usermanagement.login_gmail_get_otp();
+//	}
+//	
+//	
+//	
 	@Then("Click the Get OTP button")
 	public void click_the_get_otp_button() {
 	   loginpage.click_OTP_button();

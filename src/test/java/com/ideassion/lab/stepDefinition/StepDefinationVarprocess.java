@@ -231,7 +231,7 @@ public class StepDefinationVarprocess extends BaseClass{
 	 }
 	 @And("Perform action tab in var1 perform by the BE number123")
 	 public void replace_data3() {
-		 varprocess.update_BEnumber1_2();
+		 varprocess.update_BEnumber1_3();
 		 varprocess.after_draft_action_perform();
 	 }
 	 @Given("Click on VAR1_VS3 tab")

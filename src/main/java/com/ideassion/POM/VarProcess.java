@@ -335,6 +335,42 @@ public class VarProcess extends BaseClass {
 			logger.info("not properformed perpoerly in var process 1 clinic");
 		}
 	}
+	public void enter_all_MOH_clicnic_mandatory_datas() {
+		try {
+			   var1_clinic_district.click();
+			var1_clinic_district.sendKeys(Keys.ARROW_DOWN);
+			var1_clinic_district.sendKeys(Keys.ENTER);
+			
+			var1_clinic_Clinic.click();
+			var1_clinic_Clinic.sendKeys(Keys.ARROW_DOWN);
+			var1_clinic_Clinic.sendKeys(Keys.ENTER);
+		    var1_clinic_BEcategory.click();
+		    var1_clinic_BEcategory.sendKeys(Keys.ARROW_DOWN);
+		    var1_clinic_BEcategory.sendKeys(Keys.ARROW_DOWN);
+		    var1_clinic_BEcategory.sendKeys(Keys.ARROW_DOWN);
+			var1_clinic_BEcategory.sendKeys(Keys.ENTER);
+			sendkeysText(var1_clinic_KewPaNo, "123");
+		    var1_clinic_Manufacturer.click();
+			var1_clinic_Manufacturer.sendKeys(Keys.ARROW_DOWN);
+			var1_clinic_Manufacturer.sendKeys(Keys.ARROW_DOWN);
+			var1_clinic_Manufacturer.sendKeys(Keys.ARROW_DOWN);
+			var1_clinic_Manufacturer.sendKeys(Keys.ENTER);
+			scrollBy200();
+			
+			var1_clinic_Model.click();
+			var1_clinic_Model.sendKeys(Keys.ARROW_DOWN);
+			var1_clinic_Model.sendKeys(Keys.ENTER);
+			sendkeysText(var1_clinic_Serial_no, "123");
+			Thread.sleep(8000);
+			scrollIntoView(va1_clinic_save_submit);
+			sendkeysText(var1_clinic_SupportingDocument,
+					"C:\\Users\\LTP-7\\OneDrive\\Desktop\\EQUIPMENT-SUPPLIER-DETAILS.pdf");
+			
+
+		} catch (Exception e) {
+			logger.info("not properformed perpoerly in var process 1 clinic");
+		}
+	}
 
 	public void save_submit() {
 		scrollIntoView(va1_clinic_save_submit);
