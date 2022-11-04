@@ -40,7 +40,7 @@ public class LoginPage  extends BaseClass{
 		try {
 		clickOnElement(send_OTP_button);
 		removeHighLightElement(email_address_inputbox);
-		Thread.sleep(8000);
+		Thread.sleep(9000);
 	
 		logger.info("Login page Click the OTP button successfully");
 	}

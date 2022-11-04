@@ -27,6 +27,7 @@ import com.ideassion.inputdatas.Inputdata;
 import com.ideassion.var1.pom.Var1UserManagement;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import negativeFlow.com.ideassion.Varprocess.VarProcessNegativePOM;
 
 public class BaseClass extends Inputdata {
 
@@ -47,6 +48,7 @@ public class BaseClass extends Inputdata {
 	public static ManufacturerModel manufacturermodels;
 	public static VarProcess varprocess;
 	public static Var1UserManagement usermanagement;
+	public static VarProcessNegativePOM negative;
 	
 	
 	public void openBrowser(String browser) {
@@ -81,6 +83,8 @@ public class BaseClass extends Inputdata {
 		manufacturermodels = new ManufacturerModel(getDriver.get(Thread.currentThread().getId()));
 		varprocess = new VarProcess(getDriver.get(Thread.currentThread().getId()));
 		usermanagement = new Var1UserManagement(getDriver.get(Thread.currentThread().getId()));
+	  negative = new VarProcessNegativePOM(getDriver.get(Thread.currentThread().getId()));
+	
 	}
 
 	public boolean waitForElement(WebElement element) {
@@ -89,7 +93,6 @@ public class BaseClass extends Inputdata {
 			WebDriverWait wait = new WebDriverWait(getDriver.get(Thread.currentThread().getId()), 30);
 			wait.until(ExpectedConditions.visibilityOf(element));
 			flag = true;
-			logger.info(element.getText() + " is visible");
 			return flag;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -103,6 +106,7 @@ public class BaseClass extends Inputdata {
 		try {
 			if (waitForElement(element)) {
 				highLightElement(element);
+				scrollIntoView(element);
 				Thread.sleep(1000);
 				removeHighLightElement(element);
 				element.click();
@@ -266,6 +270,7 @@ public class BaseClass extends Inputdata {
 
 		try {
 			highLightElement(element);
+			scrollIntoView(element);
 			Thread.sleep(1000);
 			removeHighLightElement(element);
 			((JavascriptExecutor) (getDriver.get(Thread.currentThread().getId())))

@@ -2,6 +2,7 @@ package com.ideassion.lab.stepDefinition;
 
 import com.ideassion.lab.base.BaseClass;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -19,5 +20,13 @@ public class StepDefinationMOHclinicUser extends BaseClass{
     @Then("Click on statemanager varprocess")
     public void statemanager() {
     	usermanagement.statemanger_perform();
+    }
+    @Then("Perform BE registration process")
+    public void BE_details() {
+    	usermanagement.BE_Registration();
+    }
+    @And("Click on the var1_vs2_Omission page")
+    public void click_varOmssion() {
+    	usermanagement.var1_vs2_omssion();
     }
 }
