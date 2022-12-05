@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -105,10 +106,11 @@ public class BaseClass extends Inputdata {
 		boolean flag = false;
 		try {
 			if (waitForElement(element)) {
-				highLightElement(element);
 				scrollIntoView(element);
+				highLightElement(element);
 				Thread.sleep(1000);
 				removeHighLightElement(element);
+				scrollBy_300();
 				element.click();
 
 			}
@@ -205,6 +207,17 @@ public class BaseClass extends Inputdata {
 		}
 		return flag;
 	}
+	public static void ClearInputBoxData(WebElement element) {
+		try {
+			for(int i=0;i<50;i++) {
+		String data=Keys.BACK_SPACE.toString();
+		element.sendKeys(data);
+		}
+		}
+		catch (Exception e) {
+		
+		}
+	}
 
 	public boolean elementDisplayed(WebElement element) {
 		boolean flag = false;
@@ -269,10 +282,12 @@ public class BaseClass extends Inputdata {
 	public static void clickonJavascript(WebElement element) {
 
 		try {
-			highLightElement(element);
 			scrollIntoView(element);
+			
+			highLightElement(element);
 			Thread.sleep(1000);
 			removeHighLightElement(element);
+			scrollBy_300();
 			((JavascriptExecutor) (getDriver.get(Thread.currentThread().getId())))
 					.executeScript("arguments[0].click();", element);
 
@@ -286,7 +301,7 @@ public class BaseClass extends Inputdata {
 	public static void scrollBy200() {
 		try {
 			((JavascriptExecutor) (getDriver.get(Thread.currentThread().getId())))
-					.executeScript("window.scrollBy(0,200);", "");
+					.executeScript("window.scrollBy(0,300);", "");
 			Thread.sleep(1000);
 		} catch (Exception Ex) {
 
@@ -297,8 +312,8 @@ public class BaseClass extends Inputdata {
 	public static void scrollBy_300() {
 		try {
 			((JavascriptExecutor) (getDriver.get(Thread.currentThread().getId())))
-					.executeScript("window.scrollBy(0,-400);", "");
-			Thread.sleep(1000);
+					.executeScript("window.scrollBy(0,-4000)", "");
+		
 		} catch (Exception Ex) {
 
 		}

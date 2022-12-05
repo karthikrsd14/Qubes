@@ -6,7 +6,6 @@ Feature: Login Multiple user perform
     Given Lanch the browser in as "chrome"
     When Enter the QUBES url as "http://34.124.173.240/"
     Then Enter the valid Username give the input box as "PRK004"
-    Then Click the Get OTP button
     Then Verfied the OTP in Outlook
     Then Enter the Valid OTP give the input box
     And Click on the Signin button
@@ -30,9 +29,9 @@ Feature: Login Multiple user perform
     Given Lanch the browser in as "chrome"
     When Enter the QUBES url as "http://34.124.173.240/"
     Then Enter the valid Username give the input box as "haja.kuthubudin@qms.com.my"
-    Then Click the Get OTP button
     Then Verfied the OTP in Outlook
     Then Enter the Valid OTP give the input box
+    And Click on the Signin button
      And Click on the Test Environment
    Then Click on statemanager varprocess
     Then Click on generate the BE number
@@ -47,9 +46,9 @@ Feature: Login Multiple user perform
     Given Lanch the browser in as "chrome"
     When Enter the QUBES url as "http://34.124.173.240/"
     Then Enter the valid Username give the input box as "prkqaam@qms.com.my"
-    Then Click the Get OTP button
     Then Verfied the OTP in Outlook
     Then Enter the Valid OTP give the input box
+    And Click on the Signin button
      And Click on the Test Environment
      Then Perform BE registration process
       Then Basic information tab are the next button click

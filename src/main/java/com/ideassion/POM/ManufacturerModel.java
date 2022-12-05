@@ -192,5 +192,11 @@ public class ManufacturerModel extends BaseClass {
 		clickOnElement(pdf);
 		clickOnElement(xlsx);
 	}
+	public void click_save_submit() {
+		clickOnElement(add_manufacturer_save_submit);
+	}
+	public void enter_vaild_manufacutrer_name() {
+		
+	}
 
 }

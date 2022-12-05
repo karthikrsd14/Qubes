@@ -30,21 +30,46 @@ public class LoginPage  extends BaseClass{
 	@FindBy(xpath="(//div[contains(@class,'card')])[2]")
 	private WebElement Test;
 	
-	public void enter_username(String username) {
+	@FindBy(xpath="//div[contains(text(),'User name is not found')]")
+	private WebElement Displyed;
+	
+	@FindBy(xpath="//p[contains(text(),'User Name is Not Found!')]")
+	private WebElement Sapce;
+	
+	
+	
+	
+	public void enter_username(String username) throws InterruptedException {
 		sendkeysText(email_address_inputbox,username);
 		highLightElement(email_address_inputbox);
 		logger.info("Lanch the Qubes Login url :"+username+"Successfully");
-		
+		removeHighLightElement(email_address_inputbox);
+		clickOnElement(send_OTP_button);
+		Thread.sleep(1000);
 	}
 	public void click_OTP_button() {
 		try {
-		clickOnElement(send_OTP_button);
-		removeHighLightElement(email_address_inputbox);
-		Thread.sleep(9000);
+			
+		
+		String data=email_address_inputbox.getAttribute("value");
+		logger.info(" inValid Username :"+data.length());
+		
+		if(data.length()==0||( Displyed.isDisplayed())) {
+			logger.info("Browser is Cloed Because inValid Username : "+data+Displyed.getText());
+			Thread.sleep(1000);
+			getDriver.get(Thread.currentThread().getId()).quit();
+		}
+		else {
+			logger.info("Valid Username :");
+		}
+		
+		
 	
 		logger.info("Login page Click the OTP button successfully");
 	}
 		catch(Exception e) {
+			logger.info(e.getMessage());
+			getDriver.get(Thread.currentThread().getId()).quit();
 		}
 		}
 	

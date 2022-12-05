@@ -1,14 +1,21 @@
 package com.ideassion.POM;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 import com.ideassion.lab.base.BaseClass;
+
 import junit.framework.Assert;
 
 @SuppressWarnings("deprecation")
@@ -278,11 +285,25 @@ public class VarProcess extends BaseClass {
 	@FindBy(id = "myfile")
 	private WebElement VAR1_VS4_supporting_Document;
 	
+	@FindBy(xpath = "//button[contains(text(),'Import CSV')]")
+	private WebElement  CSV;
+	
+	@FindBy(xpath = "//input[@id='fileDropRef']")
+	private WebElement Browse_File;
+	
+	@FindBy(xpath = "//button[contains(text(),'Upload File')]")
+	private WebElement Upload_File;
 	
 	
 	
-	
-	
+	public void csv() throws IOException, InterruptedException {
+   clickOnElement(CSV);
+   Browse_File.sendKeys("C:\\Users\\LTP-7\\Data\\BE Registration Template - Arun - Copy.csv");
+   Thread.sleep(2000);
+   
+//   Runtime.getRuntime().exec("C:\\Users\\LTP-7\\OneDrive\\Documents\\FIleUpload.exe");
+   clickOnElement(Upload_File);
+	}
 	
 	public void click_on_varprocess_tab() {
 		scrollIntoView(VarProcess_tab);
@@ -292,9 +313,9 @@ public class VarProcess extends BaseClass {
 	}
 
 	public void click_var1Clinic() {
-		highLightElement(var1_clinic);
+		
 		clickOnElement(var1_clinic);
-		removeHighLightElement(var1_clinic);
+		
 	}
 
 	public void click_var1Clinic_newbutton() {
@@ -309,13 +330,31 @@ public class VarProcess extends BaseClass {
 			var1_clinic_Clinic.sendKeys(Keys.ENTER);
 			sendkeysText(var1_clinic_BEcategory,BECategory());
 			var1_clinic_BEcategory.sendKeys(Keys.ENTER);
+//			
+//	Point po=var1_clinic_Purchase_date.getLocation();
+// int x=	po.getX();
+// int y=po.getY();
+// int value=(x+y)/2;
+//                  Dimension dim= var1_clinic_Purchase_date.getSize();
+//              int hig=    dim.getHeight();
+//              int wid= dim.getWidth();
+//              int value1=(hig+wid)/2;
+              
+         
+              
+			
+//		String value=	var1_clinic_Purchase_date.getAttribute("value");
+//		logger.info(value+": Date");
+//		Actions a= new Actions(driver);
+//		a.doubleClick(var1_clinic_Purchase_date).build().perform();
 //			var1_clinic_Purchase_date.sendKeys("12/10/2022");
 //			JavascriptExecutor js = ((JavascriptExecutor) (driver));
 //			Date d = new Date();
 //			SimpleDateFormat sm = new SimpleDateFormat("yyyy-MM-dd");
 //			String ab = sm.format(d);
-//			js.executeScript("arguments[0].setAttribute('ng-reflect-model','2022-10-27');", var1_clinic_Purchase_date);
+//			js.executeScript("arguments[0].ng-reflect-model='2022-10-31'", var1_clinic_Purchase_date);
 			scrollIntoView(var1_clinic_Model);
+			//point 
 			sendkeysText(var1_clinic_KewPaNo, "987654321");
 			sendkeysText(var1_clinic_Manufacturer, Manufacturer());
 			var1_clinic_Manufacturer.sendKeys(Keys.ENTER);
@@ -421,7 +460,7 @@ public class VarProcess extends BaseClass {
 		scrollIntoView(var1_vs1_edit_KEWPA_Cost);
 		sendkeysText(var1_vs1_edit_KEWPA_Cost, "987");
 		sendkeysText(var1_vs1_edit_EquipmentPicture_file,
-				"C:\\Users\\LTP-7\\OneDrive\\Pictures\\Screenshots\\Screenshot (2).png");
+				"C:\\Users\\LTP-7\\OneDrive\\Desktop\\DataSheet\\BE-Number.pdf");
 		sendkeysText(var1_vs1_edit_Form_A04Registration_file,
 				"C:\\Users\\LTP-7\\OneDrive\\Desktop\\EQUIPMENT-SUPPLIER-DETAILS.pdf");
 		sendkeysText(var1_vs1_edit_Form_EBC1_file, "C:\\Users\\LTP-7\\OneDrive\\Desktop\\DataSheet\\BE-Number.pdf");
@@ -507,8 +546,9 @@ public class VarProcess extends BaseClass {
 	}
 
 	public void click_Equipmanagement_tab() {
+		
 		clickOnElement(equipment_management);
-	}
+			}
 
 	public void click_BERegestration_under_equipment() {
 		clickOnElement(BE_registration_tab_equipmanagement);

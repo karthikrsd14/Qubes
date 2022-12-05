@@ -3,14 +3,13 @@ Feature: Pass the Valid Positive Test
 
   @QUBESLoginTest
   Scenario: Login the Page in Valid credentials
-    Given Lanch the browser in as "chrome"
+   Given Lanch the browser in as "chrome"
     When Enter the QUBES url as "http://34.124.173.240/"
     When Enter the valid Username give the input box as "admin@qms.com.my"
-    Then Click the Get OTP button
-    #Then Verfied the OTP in Outlook
-    #Then Enter the Valid OTP give the input box
+    Then Verfied the OTP in Outlook
+    Then Enter the Valid OTP give the input box
     And Click on the Test Environment
-#
+
   #@Masterdetail_Equipments_supplier_check
   #Scenario: check the all master details QUBES in New manufacturer suppiler details Customer
     #Given Click on master tab

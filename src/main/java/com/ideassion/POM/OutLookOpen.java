@@ -67,7 +67,7 @@ public class OutLookOpen extends BaseClass{
 		clickOnElement(singin_tab);
 	}
 	public void login() {
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		sendkeysText(emailId_inputBox, Inputdata.Username());
 		clickOnElement(next_Button);
 		sendkeysText(password_inputBox, Inputdata.Password());
@@ -98,7 +98,6 @@ public class OutLookOpen extends BaseClass{
 		try {
 		driver.switchTo().window(list.get(0));
 		sendkeysText(OTP_inputbox,op);
-		Thread.sleep(1000);
 		System.out.println(driver.getCurrentUrl());
 		driver.switchTo().window(list.get(1));
 //		Actions a = new Actions(driver);

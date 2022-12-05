@@ -1,5 +1,5 @@
 package com.ideassion.lab.stepDefinition;
-import org.openqa.selenium.OutputType; 
+import org.openqa.selenium.OutputType;  
 import org.openqa.selenium.TakesScreenshot;
 
 import com.ideassion.lab.base.BaseClass;

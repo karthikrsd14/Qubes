@@ -3,6 +3,7 @@ package com.ideassion.POM;
 import java.util.List; 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -153,6 +154,22 @@ public class QubesMasterNewSuppiler extends BaseClass {
 	@FindBy(xpath = "(//input[contains(@type,'text')])[7]")
 	private WebElement modified_contactNumberFax_inputbox;
 	
+	@FindBy(xpath = "//div[contains(text(),'Please fill the Supplier Name')]")
+	private WebElement Error_msg;
+	
+	@FindBy(xpath = "(//div[contains(@class,'card-body ng-tns')])[1]")
+	private WebElement All_Elements;
+	
+	@FindBy(xpath = "(//small[contains(text(),'is required')])[1]")
+	private WebElement All_Error_MSG;
+	
+	@FindBy(xpath = "//input[@type='text']")
+	private List<WebElement> edit_all_tabs;
+	
+	@FindBy(xpath = "//div[contains(text(),'Please fill all fields')]")
+	private WebElement edit_page_error_msg;
+	
+	
 	public void click_masterTab_button() {
 		if (driver.getCurrentUrl().toString().contains("loading")) {
 			logger.info("Currently User presenting in the QUBES home page ");
@@ -162,11 +179,11 @@ public class QubesMasterNewSuppiler extends BaseClass {
 			getDriver.get(Thread.currentThread().getId()).close();
 		}
 		try {
-				highLightElement(master_tab);
+				
 				clickOnElement(master_tab);
 				ConsolePrint.Consoleprint();
 				logger.info("Click on the " + master_tab.getText() + " Successfully");
-				removeHighLightElement(master_tab);
+				
 			}
 		 catch (Exception e) {
 
@@ -174,11 +191,11 @@ public class QubesMasterNewSuppiler extends BaseClass {
 	}
 
 	public void click_supplier_manufacturer_tab() {
-		removeHighLightElement(master_tab);
-		highLightElement(supplier_manufacturer_tab);
+		
+		
 		clickOnElement(supplier_manufacturer_tab);
 		logger.info("Click on the " + supplier_manufacturer_tab.getText() + " Successfully");
-		removeHighLightElement(supplier_manufacturer_tab);
+		
 	}
 
 	public void clickon_newbutton() {
@@ -186,7 +203,7 @@ public class QubesMasterNewSuppiler extends BaseClass {
 			
 			elementDisplayed(New_Button);
 			elementEnabled(New_Button);
-			highLightElement(New_Button);
+			
 			clickOnElement(New_Button);
 			logger.info("Successfully click on the NEW buton");
 		} catch (Exception e) {
@@ -196,7 +213,7 @@ public class QubesMasterNewSuppiler extends BaseClass {
 
 	public void equipment_supplier_nametextbox() {
 		try {
-		removeHighLightElement(New_Button);
+		
 		elementDisplayed(Equipment_supplier_name);
 		elementEnabled(Equipment_supplier_name);
 		sendkeysText(Equipment_supplier_name, SupplierName());
@@ -326,7 +343,7 @@ public class QubesMasterNewSuppiler extends BaseClass {
 			sendkeysText(data_passed,"C:\\Users\\LTP-7\\OneDrive\\Desktop\\EQUIPMENT-SUPPLIER-DETAILS.pdf");
 			Thread.sleep(1000);
 			scrollBy200();
-			Thread.sleep(3000);
+			
 		} catch (Exception e) {
 
 		}
@@ -345,7 +362,137 @@ public class QubesMasterNewSuppiler extends BaseClass {
 			}
 		}
 	}
+	public void Negative_flow_supplier() throws InterruptedException {
 	
+		clickOnElement(generateCode_button);
+		if(elementDisplayed(Error_msg)) {
+			Thread.sleep(1000);
+		}
 	}
+		public void exit_data() throws InterruptedException {
+			clickOnElement( after_verified_ok_button);
+			sendkeysText(Equipment_supplier_name,"Newdata1");
+
+		clickOnElement(generateCode_button);
+		Thread.sleep(1000);
+		}
+		public void newdatas() {
+		WebElement data=	driver.findElement(By.xpath("//div[contains(text(),'Supplier Name Already exists')]"));
+		if(elementDisplayed(data)) {
+			clickOnElement(after_verified_ok_button);
+			sendkeysText(Equipment_supplier_name,SupplierName());
+			clickOnElement(generateCode_button);
+		}
+		}
+		public void with_outdata() throws InterruptedException {
+			clickOnElement(save_submit_button);
+			if(elementDisplayed(All_Error_MSG)) {
+				Thread.sleep(1000);
+
+			}
+		}
+		public void address_data() throws InterruptedException {
+			sendkeysText(address_inputbox, Address());
+			clickOnElement(save_submit_button);
+			Thread.sleep(1000);
+
+		}
+		public void contact_person() throws InterruptedException {
+			if(elementDisplayed(All_Error_MSG)) {
+				ClearInputBoxData(address_inputbox);
+				
+				sendkeysText(contactPerson_inputbox,Contactperson());
+				clickOnElement(save_submit_button);
+				Thread.sleep(1000);
+
+			}
+		}
+			public void contact_number() throws InterruptedException  {
+				if(elementDisplayed(All_Error_MSG)) {
+					ClearInputBoxData(contactPerson_inputbox);
+					sendkeysText(contactMobile_numberInputbox,ContactNumber());
+					clickOnElement(save_submit_button);
+					Thread.sleep(1000);
+
+				}
+			}
+			public void email() throws InterruptedException  {
+					if(elementDisplayed(All_Error_MSG)) {
+						sendkeysText(primaryEmailID_inputbox, EmailIDprimary());
+						clickOnElement(save_submit_button);
+						
+						if(elementDisplayed(All_Error_MSG)) {
+							sendkeysText(contactlandline_inputbox, Landline());
+							clickOnElement(save_submit_button);
+						
+						if(elementDisplayed(All_Error_MSG)) {
+							sendkeysText(address_inputbox, Address());
+							sendkeysText(contactPerson_inputbox,Contactperson());
+//							clickOnElement(save_submit_button);
+							Thread.sleep(1000);
+						}
+						}
+		
+			
+			}
+			}
+			public void edit_tabs1_negative() {
+				if(elementDisplayed(modified_address_inputbox)) {
+				 ClearInputBoxData(modified_address_inputbox);
+				 clickOnElement(before_verified_save_button);
+				if(elementDisplayed(edit_page_error_msg)) {
+				
+				}
+				}
+				}
+				public void edit_tabs2_negative() {
+					
+					clickOnElement(after_verified_ok_button);
+					modified_address_inputbox.sendKeys(Address());
+				 if(elementDisplayed(modified_contactPerson_inputbox)) {
+					 ClearInputBoxData(modified_contactPerson_inputbox);
+					 clickOnElement(before_verified_save_button);
+					if(elementDisplayed(edit_page_error_msg)) {
+						
+					
+				 }
+					}
+				}
+				public void edit_tabs3_negative() {
+					
+						clickOnElement(after_verified_ok_button);
+						modified_contactPerson_inputbox.sendKeys(Contactperson());	
+				 if(elementDisplayed(modified_contactMobile_numberInputbox)) {
+					 
+				ClearInputBoxData(modified_contactMobile_numberInputbox);
+					 clickOnElement(before_verified_save_button);
+					if(elementDisplayed(edit_page_error_msg)) {
+					
+				 }
+					}
+				}
+				public void edit_tabs4_negative() {
+
+						clickOnElement(after_verified_ok_button);
+						modified_contactMobile_numberInputbox.sendKeys(ContactNumber());	
+					 ClearInputBoxData(modified_primaryEmailID_inputbox);
+					 clickOnElement(before_verified_save_button);
+					if(elementDisplayed(edit_page_error_msg)) {
+					}
+				    }
+				public void edit_tabs5_negative() {
+					
+						clickOnElement(after_verified_ok_button);
+						modified_primaryEmailID_inputbox.sendKeys(EmailIDprimary());	
+			clickOnElement(before_verified_save_button);
+			
+					}
+			
+				public void edit_tabs6_negative() {
+					clickOnElement(before_verified_ok_button);
+					 clickOnElement(after_verified_ok_button);
+			
+			}
+}
 
 

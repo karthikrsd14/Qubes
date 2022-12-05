@@ -61,6 +61,29 @@ public class StepDefinationManufacturerModeles extends BaseClass{
 	 public void download_validation() {
 		manufacturermodels.download(); 
 	 }
-	
+	 @Then("Click on save and submit button manufacturer model")
+	 public void click_on_save_and_submit_button_manufacturer_model() {
+	    
+	     manufacturermodels.click_save_submit();
+	 }
+
+	 @Then("Select verified manufacturer name drop down")
+	 public void select_verified_manufacturer_name_drop_down() {
+	    
+	     
+	 }
+
+	 @Then("Click on Catagory BE catagory")
+	 public void click_on_catagory_be_catagory() {
+	    
+	     
+	 }
+
+	 @Then("Select the manufacurer details without verified manufacturer name")
+	 public void select_the_manufacurer_details_without_verified_manufacturer_name() {
+	    
+	     
+	 }
+
 
 }

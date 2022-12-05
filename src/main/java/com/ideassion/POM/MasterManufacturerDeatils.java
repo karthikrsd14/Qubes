@@ -24,7 +24,13 @@ public static String name;
 	@FindBy (xpath = "(//input[@type='text'])[1]")
 	private WebElement manufacuturer_category;
 
-	@FindBy(xpath = "(//input[@type='text'])[2]")
+	@FindBy (xpath = "//label[contains(text(),'BE Category')]")
+	private WebElement BE_category;
+	
+	@FindBy (xpath = "//label[contains(text(),'TE Category')]")
+	private WebElement TE_category;
+	
+	@FindBy(xpath = "(//input[@type='text'])[1]")
 	private WebElement manufacturer_name;
 
 	@FindBy(xpath = "//button[contains(text(),'Generate Code')]")
@@ -54,7 +60,7 @@ public static String name;
 	@FindBy(xpath = "(//input[contains(@type,'text')])[5]")
 	private WebElement contact_number_landline;
 
-	@FindBy(xpath = "(//input[contains(@type,'text')])[6]")
+	@FindBy(xpath = "(//input[contains(@type,'text')])[4]")
 	private WebElement contact_number_mobile;
 
 	@FindBy(xpath = "//button[contains(text(),'Save & Submit')]")
@@ -101,23 +107,33 @@ public static String name;
 	@FindBy(xpath = "(//a[contains(@class,'float-right ng-tns')])[4]")
 	private WebElement XLSX_download_tab;
 
+	@FindBy(xpath = "//div[contains(text(),'Kindly select a Category Before generating the Code')]")
+	private WebElement select_erro_catagory_tab;
+
+	@FindBy(xpath = "//small[contains(text(),'is required')]")
+	private WebElement add_manufacturer_error;
+	
+	@FindBy(xpath = "//div[contains(text(),'Already exists')]")
+	private WebElement error_exists_msg;
+
+	
+	
+	
+	
 	public void click_manufacturer_details_tab() {
-		scrollBy_300();
-		scrollBy_300();
-		highLightElement(manufacturer_details_tab);
+		
 		clickOnElement(manufacturer_details_tab);
 	}
 	public void click_newtab() {
 		try {
-		removeHighLightElement(manufacturer_details_tab);
+		
 		clickOnElement(New_button);
 	}
 		catch(Exception e) {
 		}
 		}
 	public void enter_category_type() {
-		sendkeysText(manufacuturer_category, CategoryType());
-		manufacuturer_category.sendKeys(Keys.ENTER);
+		clickOnElement(BE_category);
 	}
 	public void enter_manufacturer_name() {
 		sendkeysText(manufacturer_name,SupplierName() );
@@ -212,5 +228,57 @@ public static String name;
 		verfied_PDF_manufacturer_download(PDF_download_tab);
 		verfied_XLSX_manufacturer_download(XLSX_download_tab);
 	}
-	
+	public void invaild_name_data() {
+		if(elementDisplayed(select_erro_catagory_tab)) {
+			clickOnElement(successfully_created_ok_button);
+			sendkeysText(manufacturer_name, "ZOLAR");
+		clickOnElement(generatecode_button);
+		}
+	}
+	public void select_catagory_deyails() {
+		if(elementDisplayed(select_erro_catagory_tab)) {
+			clickOnElement(successfully_created_ok_button);
+			clickOnElement(BE_category);
+		clickOnElement(generatecode_button);
+		}
+	}
+	public void enter_vaild_manufacturer_name() {
+		if(elementDisplayed(error_exists_msg)) {
+			clickOnElement(successfully_created_ok_button);
+			sendkeysText(manufacturer_name,SupplierName());
+		clickOnElement(generatecode_button);
+		}
+	}
+	public void without_data_save() {
+		clickOnElement(add_manufacturer_save_submit);
+	}
+	public void enter_contact_person() {
+		sendkeysText(contact_personName_inputBox, "Idea");
+		clickOnElement(add_manufacturer_save_submit);
+	}
+	public void enter_emailid() {
+		if(elementDisplayed(add_manufacturer_error)) {
+			sendkeysText(primary_email,"idea@gmail.com");
+			clickOnElement(add_manufacturer_save_submit);
+	}
+	}
+	public void enter_contactnumber_landline() {
+		if(elementDisplayed(add_manufacturer_error)) {
+			sendkeysText(contact_number_landline, "90425987");
+			clickOnElement(add_manufacturer_save_submit);
+	}
+	}
+	public void enter_contactnumber_mobile() {
+		if(elementDisplayed(add_manufacturer_error)) {
+			sendkeysText(contact_number_mobile, "78952409");
+			clickOnElement(add_manufacturer_save_submit);
+	}
+	}
+	public void click_ok_button() {
+		clickOnElement(add_manufacturer_ok_button);
+		clickOnElement(successfully_created_ok_button);
+	}
+	public void Error_Ok_buton() {
+		clickOnElement(successfully_created_ok_button);
+	}
 }
